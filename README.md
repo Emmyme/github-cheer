@@ -1,6 +1,6 @@
 # GitHub Cheer
 
-A fun and motivating tool that tracks your GitHub activity and provides encouraging messages based on your commit activity. Perfect for developers who want a little boost of motivation after pushing their code!
+A fun and motivating tool that tracks your GitHub activity and provides encouraging messages based on your commit activity. For developers who want some extra positivity!
 
 ## Features
 
@@ -13,7 +13,7 @@ A fun and motivating tool that tracks your GitHub activity and provides encourag
 1. **Clone the repository**:
 
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Emmyme/github-cheer
    cd github-cheer
    ```
 
