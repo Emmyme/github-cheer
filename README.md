@@ -2,6 +2,8 @@
 
 A fun and motivating tool that tracks your GitHub activity and provides encouraging messages based on your commit activity. For developers who want some extra positivity!
 
+![Example](assets/image.png)
+
 ## Features
 
 - **Activity Tracking**: Monitors your GitHub commits for today and the past week
