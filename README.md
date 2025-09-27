@@ -7,8 +7,10 @@ A fun and motivating tool that tracks your GitHub activity and provides encourag
 ## Features
 
 - **Activity Tracking**: Monitors your GitHub commits for today and the past week
-- **Git Hooks Integration**: Automatically runs after every push with git hooks
-- **Easy Setup**: Simple configuration with just your GitHub username (token optional)
+- **Private & Public Repos**: With a GitHub token, tracks activity across all your repositories
+- **Git Hooks Integration**: Automatically runs after every commit with git hooks
+- **Randomized Messages**: Multiple message variations keep the experience fresh
+- **Easy Setup**: Simple configuration with just your GitHub username and token
 
 ## Installation
 
@@ -62,7 +64,7 @@ A fun and motivating tool that tracks your GitHub activity and provides encourag
    $env:GITHUB_TOKEN = "your-github-token"
    ```
 
-   > **Note**: The tool works with public GitHub data by default. If you want to access private repositories or have higher rate limits, you can create a GitHub Personal Access Token.
+   > **Note**: A GitHub Personal Access Token is recommended to access private repositories and get higher rate limits. Without a token, only public repository activity is tracked.
 
 4. **Install git hooks** (optional):
 
@@ -116,20 +118,27 @@ Once you've installed the git hooks, the script will automatically run after eve
 
 - **Local hooks** only work in this repository
 - **Global hooks** work in all repositories after setup
-- The tool tracks commits pushed to GitHub, not local commits
+- The tool tracks commits **pushed to GitHub**, not local commits that haven't been pushed yet
 
 ## How It Works
 
-The tool fetches your public GitHub events and analyzes your commit activity:
+The tool uses the GitHub API to fetch your recent activity and analyzes your commit activity:
 
-- **Today's commits**: Counts all commits made today
-- **Weekly commits**: Counts all commits made in the past 7 days
+- **Today's commits**: Counts all commits **pushed to GitHub** today
+- **Weekly commits**: Counts all commits **pushed to GitHub** in the past 7 days
 
-Based on your activity, you'll receive different encouraging messages:
+> **Important**: Only commits that have been pushed to GitHub are counted. Local commits that haven't been pushed yet won't appear in your activity count.
 
-- **High achiever**: 3+ commits today → "Wow! X commits today! Keep crushing it!"
-- **Consistent coder**: 10+ commits this week → "You made X commits this week! You're on fire!"
-- **Steady progress**: Default message → "Good job! You made X commits today and Y commits this week. Keep it up!"
+Based on your activity, you'll receive different encouraging messages with randomized variations:
+
+- **Super achiever**: 8+ commits today → "Incredible! X commits today! You're absolutely crushing it!"
+- **High achiever**: 5+ commits today → "Amazing! X commits today! You're in the zone!"
+- **Good progress**: 3+ commits today → "Excellent! X commits today! Keep crushing it!"
+- **Strong week**: 25+ commits this week → "Outstanding! X commits this week! You're unstoppable!"
+- **Consistent coder**: 10+ commits this week → "Great week! X commits! You're on fire!"
+- **Getting started**: Various encouraging messages for lower activity levels
+
+Each message tier has multiple variations that rotate randomly to keep the experience fresh!
 
 ## Project Structure
 
@@ -141,7 +150,7 @@ github-cheer/
 │   ├── cli.py          # Command-line interface
 │   └── messages.py     # Encouraging message logic
 ├── hooks/
-│   └── post-push       # Git hook script
+│   └── post-commit     # Git hook script
 ├── install-hooks.sh    # Hook installation script
 ├── requirements.txt    # Python dependencies
 └── README.md          # This file
