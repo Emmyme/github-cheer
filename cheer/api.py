@@ -4,7 +4,11 @@ class GithubAPI:
     def __init__(self, username, token=None):
         self.username = username
         self.token = token
-        self.base_url = f"https://api.github.com/users/{username}/events/public"
+        # Use authenticated endpoint if token is available, otherwise public only
+        if self.token:
+            self.base_url = f"https://api.github.com/users/{username}/events"
+        else:
+            self.base_url = f"https://api.github.com/users/{username}/events/public"
 
     def get_events(self):
         if self.token:
